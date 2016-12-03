@@ -8,7 +8,7 @@ header("Expires: 0"); // Proxies.
 
 <head>
 
-    <title>CSE 689 : statoc Analysis</title>
+    <title>CSE 689 : Analysis</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

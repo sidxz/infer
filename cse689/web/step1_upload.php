@@ -1,3 +1,9 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,27 +74,37 @@
         <h5> Supported: Gradle / Maven / Javac
         <hr>
     </div>
+    <?php
+    if (isset($_SESSION["formSubmit"]["error"])) {
+        echo '<div class="container">
+        <div class="alert alert-danger">
+            <strong>Error!</strong>'.$_SESSION["formSubmit"]["error"].'
+        </div>
+        </div>';
+        unset($_SESSION["formSubmit"]["error"]);
+    }
+    ?>
     <div class="container">
-        <form>
+        <form action="formSubmit.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
             <label for="Project Name">Project Name</label>
-            <input type="text" class="form-control" id="ProjectName" aria-describedby="ProjectHelp" placeholder="Your Project Name">
+            <input type="text" class="form-control" name="ProjectName" id="ProjectName" aria-describedby="ProjectHelp" placeholder="Your Project Name">
             <small id="ProjectHelp" class="form-text text-muted">This project name will be used to access results later.</small>
             </div>
 
             <div class="form-group">
             <label for="BuildType">Build Type</label>
-            <select class="form-control" id="BuildType">
-                <option>Single Java File</option>
-                <option>Maven Project</option>
-                <option>Gradle Project</option>
+            <select class="form-control" id="BuildType" name="BuildType">
+                <option value="singleJavaFile">Single Java File</option>
+                <option value="maven">Maven Project</option>
+                <option value="gradle">Gradle Project</option>
             </select>
             </div>
 
             <div class="form-group">
             <label for="AnlaysisOptions">Analysis Options</label>
-            <select multiple class="form-control" id="exampleSelect2">
-              <option>Generate Analysis Report</option>
+            <select multiple class="form-control" id="exampleSelect2" name="AnlaysisOptions">
+              <option value="summary">Generate Analysis Report</option>
               <option>Generate Control Flow Graph</option>
               <option>Download Report in CSV</option>
               <option>Debug Mode</option>
@@ -97,16 +113,16 @@
 
               <div class="form-group">
                 <label for="ProjectFile">File input</label>
-                <input type="file" class="form-control-file" id="ProjectFile" aria-describedby="fileHelp">
+                <input type="file" class="form-control-file" name="fileToUpload" id="fileToUpload" aria-describedby="fileHelp">
                 <small id="fileHelp" class="form-text text-muted">Upload a single .java file or input a tar.gz file. Tar balls will automatically be decompressed and will be compiled using the selected build type.</small>
              </div>
 
              <div class="form-group">
             <label for="Arguments">Arguments</label>
-            <input type="text" class="form-control" id="Arguments" aria-describedby="ArgumentsHelp" placeholder="Arguments">
+            <input type="text" class="form-control" id="Arguments" name="Arguments" aria-describedby="ArgumentsHelp" placeholder="Arguments">
             <small id="ArgumentsHelp" class="form-text text-muted">Pass any additional arguments that is needed to compile this project. Leave this blank if additional arguments are not required.</small>
             </div>
-            <button type="submit" class="btn btn-primary infer-background">Submit</button>
+            <button type="submit" name="submit" value="submit" class="btn btn-primary infer-background">Submit</button>
 
 
         </form>

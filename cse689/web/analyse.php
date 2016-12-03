@@ -30,7 +30,7 @@
 
 </head>
 
-<body>
+<body onload="process_wrapper();">
 
     <!-- Navigation -->
     <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
@@ -73,6 +73,24 @@
         <img src = "img/process.gif" >
         </div>
     </div>
+
+    <script type="text/javascript">
+           function process_wrapper() {
+             xhr = new XMLHttpRequest();
+             xhr.open("GET", "wrapper.php", true);
+             xhr.onprogress = function(e) {
+               //alert(e.currentTarget.responseText);
+             }
+             xhr.onreadystatechange = function() {
+               if (xhr.readyState == 4) {
+                 window.location = "summary.php"
+               }
+             }
+             xhr.send();
+           };
+    </script>
+
+
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
