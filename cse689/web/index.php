@@ -63,7 +63,7 @@ header("Expires: 0"); // Proxies.
             <h1>STATIC ANALYSIS : CSE 689 Term Project</h1>
             <h2>A brower based tool to detect generic and performance bugs in java code.</h2>
             <br>
-            <a href="step1.php" class="btn btn-dark btn-lg">Online Editor</a>
+            <a href="edit/" class="btn btn-dark btn-lg">Online Editor</a>
             <a href="step1_upload.php" class="btn btn-dark btn-lg">Upload Project</a>
         </div>
     </header>

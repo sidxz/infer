@@ -1,0 +1,88 @@
+body,html{
+	height: 100%;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+.header{
+	overflow: hidden;
+	min-width: 380px;
+	width: 100%;
+	background: #efefef;
+}
+.header ul{
+	overflow: hidden;
+	margin-left: 10px;
+	padding: 8px 0;
+}
+.header li{
+	list-style: none;
+	display: inline;
+	float: left;
+}
+.header li.stackH,.header li.stackV{
+	background: url("../img/layout_change_icon.png");
+	width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.header li.stackV{
+	margin-left: 5px;
+}
+.header li.stackH {
+    background-position: -25px 0px;
+}
+.mainContent{
+    overflow: hidden;
+    background: #efefef;
+}
+.main-left,.main-right{
+	float: left;
+	width: 50%;
+	overflow: auto;
+}
+.left-inner-content{
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.right-inner-content{
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.left-inner-content,.right-inner-content{
+}
+.left-inner-main,.right-inner-main{
+	background: #FFF;
+	overflow: auto;
+	padding: 0 10px;
+}
+.right-inner-main{
+	padding: 0;
+}
+.left-inner-main div,.right-inner-main div{
+	/*height: initial;*/
+}
+#mainContentHolder{
+	position: relative;
+}
+#draggable{
+	position: absolute;
+    z-index: 3;
+    width: 10px;
+    cursor: col-resize;
+    background: transparent;
+}
+#iframewrapper, #iframeOutput{
+	height: 100%;
+	width: 100%;
+}

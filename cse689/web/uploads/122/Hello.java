@@ -18,8 +18,8 @@ class Hello {
       fos = new FileOutputStream(new File("everwhat.txt"));
       fos.write(fis.read());
     } finally {
-       fis.close();
-       fos.close(); 
+      if (fis != null) { fis.close(); }
+      if (fos != null) { fos.close(); }
     }
   }
 

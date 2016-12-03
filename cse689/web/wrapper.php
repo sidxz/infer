@@ -8,10 +8,12 @@ if (session_status() == PHP_SESSION_NONE) {
 //echo exec('cd test && /usr/local/bin/infer -- javac Hello.java ');
 //echo exec('cd test && /usr/local/bin/infer -- javac Hello.java && pwd');
 
-sleep(7);
+sleep(6);
 $target_dir = "uploads/".$_SESSION["projectName"]."/";
 $filename = $_SESSION["fileName"];
 //exec ("cd $target_dir && chown daemon:staff *")
-echo exec("cd $target_dir && sudo /usr/local/bin/infer -- javac $filename ");
+$cmd = "cd $target_dir && /usr/local/bin/infer -- javac $filename ";
+var_dump($cmd);
+echo exec($cmd);
 
  ?>
