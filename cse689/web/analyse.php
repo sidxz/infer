@@ -1,3 +1,8 @@
+<?php
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,6 +79,8 @@
         </div>
     </div>
 
+
+
     <script type="text/javascript">
            function process_wrapper() {
              xhr = new XMLHttpRequest();
@@ -89,6 +96,51 @@
              xhr.send();
            };
     </script>
+
+     <script type="text/javascript">
+        setTimeout(function() {Ajax();}, 100);
+    </script>
+    <div class="container" id="ReloadThis2">
+    <div class="col-xs-12" style="height:50px;"></div>
+    <h4>Debug:</h4><pre id="ReloadThis" class="pre-scrollable">Default text</pre></div>
+
+    <script type="text/javascript">
+
+        function Ajax()
+        {
+            var
+                $http,
+                $self = arguments.callee;
+
+            if (window.XMLHttpRequest) {
+                $http = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                try {
+                    $http = new ActiveXObject('Msxml2.XMLHTTP');
+                } catch(e) {
+                    $http = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+            }
+
+            if ($http) {
+                $http.onreadystatechange = function()
+                {
+                    if (/4|^complete$/.test($http.readyState)) {
+                        document.getElementById('ReloadThis').innerHTML = $http.responseText;
+                        document.getElementById('ReloadThis').scrollTop = document.getElementById('ReloadThis').scrollHeight;
+                        setTimeout(function(){$self();}, 100);
+                    }
+                };
+                $http.open('GET', '<?php echo "uploads/".$_SESSION["projectName"]."/allout.txt"; ?>' + '?' + new Date().getTime(), true);
+                $http.send(null);
+            }
+
+
+        }
+
+    </script>
+
+
 
 
 

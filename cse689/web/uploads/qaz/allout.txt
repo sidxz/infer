@@ -1,0 +1,55 @@
+##### CSE 689 TERM PROJECT ... sid@tamu.edu  STEP 1
+Capturing in javac mode...
+Translating 1 source files (1 classes)
+Warning: unexpected attribute found: Code
+Warning: unexpected attribute found: Code
+Warning: unexpected attribute found: Code
+Warning: unexpected attribute found: Code
+Starting analysis...
+
+legend:
+  "F" analyzing a file
+  "." analyzing a procedure
+
+Found 1 source files in /Users/siddhant/Projects/infer/cse689/web/uploads/qaz/infer-out
+F...
+Analyzed 1 file
+
+Found 4 issues
+
+Hello.java:11: error: NULL_DEREFERENCE
+  object s last assigned on line 10 could be null and is dereferenced at line 11
+  9.     int test() {
+  10.       String s = null;
+  11. >     return s.length();
+  12.     }
+  13.   
+
+Hello.java:21: error: NULL_DEREFERENCE
+  object fis last assigned on line 14 could be null and is dereferenced at line 21
+  19.         fos.write(fis.read());
+  20.       } finally {
+  21. >        fis.close();
+  22.          fos.close(); 
+  23.   
+
+Hello.java:24: error: RESOURCE_LEAK
+   resource of type java.io.FileOutputStream acquired to fos by call to FileOutputStream(...) at line 18 is not released after line 24
+  22.          fos.close(); 
+  23.       }
+  24. >   }
+  25.   
+  26.   
+
+Hello.java:22: error: NULL_DEREFERENCE
+  object fos last assigned on line 15 could be null and is dereferenced at line 22
+  20.       } finally {
+  21.          fis.close();
+  22. >        fos.close(); 
+  23.       }
+  24.   
+
+Summary of the reports
+
+  NULL_DEREFERENCE: 3
+     RESOURCE_LEAK: 1
