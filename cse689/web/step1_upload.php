@@ -97,7 +97,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <select class="form-control" id="BuildType" name="BuildType">
                 <option value="singleJavaFile">Single Java File</option>
                 <option value="maven">Maven Project</option>
-                <option value="gradle">Gradle Project</option>
+                <option value="ant">Ant Project</option>
             </select>
             </div>
 

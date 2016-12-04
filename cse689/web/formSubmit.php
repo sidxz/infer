@@ -1,6 +1,9 @@
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+
+    ini_set('post_max_size', '200M');
+    ini_set('upload_max_filesize', '200sM');
 }
 // var_dump($_POST);
 // if (!isset($_POST["ProjectName"])) {
@@ -39,6 +42,8 @@ else{
     $_SESSION["arguments"] = $_POST["Arguments"];  
 }
 
+//var_dump($_SESSION);
+//var_dump($_POST);
 
 $target_dir = "uploads/".$_SESSION["projectName"]."/";
 // Make target dir
